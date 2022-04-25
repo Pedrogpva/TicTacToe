@@ -1,3 +1,10 @@
+/*############################################################################
+Jogo da velha
+Criado por Pedro Henrique Fernandes
+
+Programa tem como objetivo criar um jogo da velha,
+utilizando POO
+##############################################################################*/
 #include<iostream>
 #include "Game.h";
 int main()
@@ -7,7 +14,7 @@ int main()
 	Game MyGame;
 	gamer = MyGame.initi();
 
-
+	//laço se repete até que seja escolhido um caracter valido
 	while (gamer != 88 && gamer != 79)
 	{
 		gamer = MyGame.initi();

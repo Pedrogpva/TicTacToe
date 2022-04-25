@@ -1,6 +1,7 @@
 #include "Game.h"
 #include<iostream>
 using  namespace std;
+//construtor
 Game::Game()
 {
 	jog1 = 'X';
@@ -21,6 +22,7 @@ Game::Game()
 
 
 }
+//Inicia o jogo
 char Game::initi()
 {
 	char esc;
@@ -35,6 +37,7 @@ char Game::initi()
 		return jog2;
 
 }
+//dezenha a matriz
 void Game::draw()
 {
 
@@ -54,6 +57,7 @@ void Game::draw()
 	}
 
 }
+//atualiza a matriz
 void Game::update(char gamer)
 {
 	unsigned pos;
@@ -83,6 +87,7 @@ void Game::update(char gamer)
 	default: cout << "Opçao invalida!";
 	}
 }
+//Verifica se alguem ganhou
 bool Game::checkWinner()
 {
 	// vence nas linhas
@@ -166,6 +171,7 @@ bool Game::checkWinner()
 
 
 }
+//faz a troca de jogadoreshh
 char Game::trocaJogador(char gamer)
 {
 	if (gamer == jog1)
