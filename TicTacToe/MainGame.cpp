@@ -2,7 +2,7 @@
 Jogo da velha
 Criado por Pedro Henrique Fernandes
 
-Programa tem como objetivo criar um jogo da velha,
+Programa tem como objetivo criar um jogo da velha
 utilizando POO
 ##############################################################################*/
 #include<iostream>
@@ -11,7 +11,7 @@ int main()
 {
 	char gamer;
 	bool winner = false;
-	Game MyGame;
+	Game MyGame{};
 	gamer = MyGame.initi();
 
 	//laço se repete até que seja escolhido um caracter valido

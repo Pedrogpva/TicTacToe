@@ -37,7 +37,7 @@ char Game::initi()
 		return jog2;
 
 }
-//dezenha a matriz
+//desenha a matriz
 void Game::draw()
 {
 
@@ -171,7 +171,7 @@ bool Game::checkWinner()
 
 
 }
-//faz a troca de jogadoreshh
+//faz a troca de jogadores
 char Game::trocaJogador(char gamer)
 {
 	if (gamer == jog1)
