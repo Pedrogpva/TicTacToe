@@ -4,8 +4,8 @@ using  namespace std;
 //construtor
 Game::Game()
 {
-	jog1 = 'X';
-	jog2 = 'O';
+	jog1 = 0x58;                               // Tecla X
+	jog2 = 0x4F;							   // Tecla O
 	int cont = 0;
 	char chr[] = "string";
 	for (int i = 0; i < 3; i++)
@@ -65,34 +65,67 @@ void Game::draw()
 
 }
 //atualiza a matriz
-void Game::update(char gamer)
+bool Game::update(char gamer)
 {
 
 	char pos = isDigit(gamer);
-	system("cls");
-	switch (pos)
+
+	if (pos == '0' && tabuleiro[0][0] != jog1 && tabuleiro[0][0] != jog2)
 	{
-	case '0': tabuleiro[0][0] = gamer;
-		break;
-	case '1': tabuleiro[0][1] = gamer;
-		break;
-	case '2': tabuleiro[0][2] = gamer;
-		break;
-	case '3': tabuleiro[1][0] = gamer;
-		break;
-	case '4': tabuleiro[1][1] = gamer;
-		break;
-	case '5': tabuleiro[1][2] = gamer;
-		break;
-	case '6': tabuleiro[2][0] = gamer;
-		break;
-	case '7': tabuleiro[2][1] = gamer;
-		break;
-	case '8': tabuleiro[2][2] = gamer;
-		break;
-	default: cout << "Opçao invalida!";
-		break;
+		tabuleiro[0][0] = gamer;
+		return true;
 	}
+	
+	if (pos == '1' && tabuleiro[0][1] != jog1 && tabuleiro[0][1] != jog2)
+	{
+		tabuleiro[0][1] = gamer;
+		return true;
+	}
+
+	if (pos == '2' && tabuleiro[0][2] != jog1 && tabuleiro[0][2] != jog2)
+	{
+		tabuleiro[0][2] = gamer;
+		return true;
+	}
+			
+	if (pos == '3' && tabuleiro[1][0] != jog1 && tabuleiro[1][0] != jog2)
+	{
+		tabuleiro[1][0] = gamer;
+		return true;
+	}
+			
+	if (pos == '4' && tabuleiro[1][1] != jog1 && tabuleiro[1][1] != jog2)
+	{
+		tabuleiro[1][1] = gamer;
+		return true;
+	}
+			
+
+	if (pos == '5' && tabuleiro[1][2] != jog1 && tabuleiro[1][2] != jog2)
+	{
+		tabuleiro[1][2] = gamer;
+		return true;
+	}
+			
+	if (pos == '6' && tabuleiro[2][0] != jog1 && tabuleiro[2][0] != jog2)
+	{
+		tabuleiro[2][0] = gamer;
+		return true;
+	}
+
+	if (pos == '7' && tabuleiro[2][1] != jog1 && tabuleiro[2][1] != jog2)
+	{
+		tabuleiro[2][1] = gamer;
+		return true;
+	}
+
+	if (pos == '8' && tabuleiro[2][2] != jog1 && tabuleiro[2][2] != jog2)
+	{
+		tabuleiro[2][2] = gamer;
+		return true;
+	}
+			
+	
 }
 //Verifica se alguem ganhou
 bool Game::checkWinner()

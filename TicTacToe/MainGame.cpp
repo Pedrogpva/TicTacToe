@@ -10,6 +10,7 @@ utilizando POO
 int main()
 {
 	char  gamer;
+	bool jogadaValida = false;
 	bool winner = false;
 	Game MyGame{};
 
@@ -18,9 +19,9 @@ int main()
 
 	do {
 		MyGame.draw();
-		MyGame.update(gamer);
+		jogadaValida = MyGame.update(gamer);
 		winner = MyGame.checkWinner();
-		if (winner == false)
+		if (winner == false && jogadaValida == true)
 		{
 			gamer = MyGame.trocaJogador(gamer);
 		}

@@ -10,7 +10,7 @@ private:
 public:
 	Game();
 	char initi();
-	void update(char);
+	bool update(char);
 	void draw();
 	void finilize(char);
 	bool checkWinner();
