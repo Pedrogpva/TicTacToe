@@ -15,6 +15,7 @@ public:
 	void finilize(char);
 	bool checkWinner();
 	char trocaJogador(char);
+	char isDigit(char gamer);
 };
 #endif // !GAME_H
 

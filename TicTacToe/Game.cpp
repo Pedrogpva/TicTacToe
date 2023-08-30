@@ -20,22 +20,29 @@ Game::Game()
 
 	}
 
-
 }
 //Inicia o jogo
 char Game::initi()
 {
-	char esc;
+	char esc = ' ';
 	cout << "Inicializando Jogo..." << endl;
-	cout << "Excolha " << jog1 << " ou " << jog2 << " para iniciar";
+	cout << "Excolha " << jog1 << " ou " << jog2 << " para iniciar ";
 	cin >> esc;
+	while (esc != jog1 && esc != jog2)
+	{
+		
+		cout << "Valor invalido!\n";
+		cout << "Excolha " << jog1 << " ou " << jog2 << " para iniciar ";
+		cin >> esc;
+		system("cls");
 
+	}
+	system("cls");
 	if (esc == jog1)
 		return jog1;
 
 	if (esc == jog2)
 		return jog2;
-
 }
 //desenha a matriz
 void Game::draw()
@@ -60,31 +67,31 @@ void Game::draw()
 //atualiza a matriz
 void Game::update(char gamer)
 {
-	unsigned pos;
-	cout << "\nDeseja colocar " << gamer << " em qual posicao ?";
-	cin >> pos;
 
+	char pos = isDigit(gamer);
+	system("cls");
 	switch (pos)
 	{
-	case 0: tabuleiro[0][0] = gamer;
+	case '0': tabuleiro[0][0] = gamer;
 		break;
-	case 1: tabuleiro[0][1] = gamer;
+	case '1': tabuleiro[0][1] = gamer;
 		break;
-	case 2: tabuleiro[0][2] = gamer;
+	case '2': tabuleiro[0][2] = gamer;
 		break;
-	case 3: tabuleiro[1][0] = gamer;
+	case '3': tabuleiro[1][0] = gamer;
 		break;
-	case 4: tabuleiro[1][1] = gamer;
+	case '4': tabuleiro[1][1] = gamer;
 		break;
-	case 5: tabuleiro[1][2] = gamer;
+	case '5': tabuleiro[1][2] = gamer;
 		break;
-	case 6: tabuleiro[2][0] = gamer;
+	case '6': tabuleiro[2][0] = gamer;
 		break;
-	case 7: tabuleiro[2][1] = gamer;
+	case '7': tabuleiro[2][1] = gamer;
 		break;
-	case 8: tabuleiro[2][2] = gamer;;
+	case '8': tabuleiro[2][2] = gamer;
 		break;
 	default: cout << "Opçao invalida!";
+		break;
 	}
 }
 //Verifica se alguem ganhou
@@ -183,9 +190,37 @@ char Game::trocaJogador(char gamer)
 		return jog1;
 	}
 }
+char Game::isDigit(char gamer)
+{
+	char pos;
+	const char posicoes[9] = { '0','1','2','3','4','5','6','7','8' };
+
+	while (true)
+	{
+		cout << "\nDeseja colocar " << gamer << " em qual posicao ?";
+		cin >> pos;
+
+		for (int i = 0; i < 10; i++)
+		{
+			if (pos == posicoes[i])
+			{
+				return posicoes[i];
+			}
+			else if (i >= 9)
+			{
+				cout << "Valor digitado invalido ";
+				
+			}
+
+		}
+		
+	}
+	
+	
+}
 void Game::finilize(char gamer)
 {
-	cout << "Parabens, " << gamer << " Venceu!\n";
+	cout << "\nParabens, " << gamer << " Venceu!\n";
 
 }
 

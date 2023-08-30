@@ -9,17 +9,12 @@ utilizando POO
 #include "Game.h";
 int main()
 {
-	char gamer;
+	char  gamer;
 	bool winner = false;
 	Game MyGame{};
-	gamer = MyGame.initi();
 
-	//laço se repete até que seja escolhido um caracter valido
-	while (gamer != 88 && gamer != 79)
-	{
-		gamer = MyGame.initi();
-		system("cls");
-	}
+
+	gamer = MyGame.initi();
 
 	do {
 		MyGame.draw();
@@ -34,7 +29,7 @@ int main()
 
 	} while (winner == false);
 
-
+	MyGame.draw();
 	MyGame.finilize(gamer);
 
 	return 0;
