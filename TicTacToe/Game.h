@@ -4,18 +4,19 @@
 class Game
 {
 private:
-	char tabuleiro[3][3];
-	char jog1, jog2;
+	char board[3][3];
+	int  cont;
+	char player1, player2;
 
 public:
 	Game();
 	char initi();
-	bool update(char);
+	bool update(const char& player);
 	void draw();
-	void finilize(char);
-	bool checkWinner();
-	char trocaJogador(char);
-	char isDigit(char gamer);
+	bool finilize(const char& winner)const;
+	char checkWinner()const;
+	char trocaJogador(const char &player);
+	char isDigit(const char &player);
 };
 #endif // !GAME_H
 

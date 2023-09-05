@@ -5,35 +5,49 @@ Criado por Pedro Henrique Fernandes
 Programa tem como objetivo criar um jogo da velha
 utilizando POO
 ##############################################################################*/
+
 #include<iostream>
 #include "Game.h";
 int main()
 {
-	char  gamer;
-	bool jogadaValida = false;
-	bool winner = false;
+	char  player;
+	bool ValidMove = false;
+	bool endGame = false;
+	int counterMove = 0;
+	char winner = 'P';
 	Game MyGame{};
 
 
-	gamer = MyGame.initi();
+	player = MyGame.initi();
 
 	do {
+		
 		MyGame.draw();
-		jogadaValida = MyGame.update(gamer);
+		ValidMove = MyGame.update(player);
 		winner = MyGame.checkWinner();
-		if (winner == false && jogadaValida == true)
+		if (ValidMove == true)
 		{
-			gamer = MyGame.trocaJogador(gamer);
+			player = MyGame.trocaJogador(player);
+			counterMove++;
+			
 		}
+		if (winner == 'X' || winner == 'O' || counterMove >= 9)
+		{
+			MyGame.draw();
+			endGame = MyGame.finilize(winner);
 
-		system("cls");
+			if (endGame == false)
+			{
+				MyGame.initi();
+				counterMove = 0;
+			}
+			
+		}
+	
+	} while (endGame == false);
 
-	} while (winner == false);
-
-	MyGame.draw();
-	MyGame.finilize(gamer);
+	std::cout << "Encerrando...";
 
 	return 0;
-
 
 }

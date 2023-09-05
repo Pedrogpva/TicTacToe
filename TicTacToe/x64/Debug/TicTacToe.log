@@ -1,4 +1,4 @@
 ﻿  Game.cpp
-C:\Users\phenr\source\repos\TicTacToe\TicTacToe\Game.cpp(46): warning C4715: 'Game::initi': nem todos os caminhos de controle retornam um valor
-C:\Users\phenr\source\repos\TicTacToe\TicTacToe\Game.cpp(129): warning C4715: 'Game::update': nem todos os caminhos de controle retornam um valor
+C:\Users\phenr\source\repos\TicTacToe\TicTacToe\Game.cpp(57): warning C4715: 'Game::initi': nem todos os caminhos de controle retornam um valor
+C:\Users\phenr\source\repos\TicTacToe\TicTacToe\Game.cpp(148): warning C4715: 'Game::update': nem todos os caminhos de controle retornam um valor
   TicTacToe.vcxproj -> C:\Users\phenr\source\repos\TicTacToe\x64\Debug\TicTacToe.exe
