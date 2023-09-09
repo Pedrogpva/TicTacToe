@@ -6,21 +6,22 @@ Game::Game()
 {
 	player1 = 0x58;                               // Tecla X
 	player2 = 0x4F;								  // Tecla O
-	cont = 0;									  // Contador 
 
-	// Inicialize a matriz no construtor
+	// Inicializa a matriz no construtor
 	for (int i = 0; i < 3; i++) {
 		for (int j = 0; j < 3; j++) {
 			board[i][j] = '0';
 		}
 	}
+	for (int i = 0; i < 9; i++)
+		validPositions[i] = '0';
 	
 }
 //Inicia o jogo
 char Game::initi()
 {
 	char player = ' ';
-	cont = 0;
+	char initialValue = '0';
 	cout << "Inicializando Jogo..." << endl;
 	cout << "Excolha " << player1 << " ou " << player2 << " para iniciar ";
 	cin >> player;
@@ -36,18 +37,24 @@ char Game::initi()
 	system("cls");
 
 	// Prenche a matriz com caracteres de 0 a 8
-	char chr[] = "string";
 	for (int i = 0; i < 3; i++)
 	{
 		for (int j = 0; j < 3; j++)
 		{
-			chr[6] = cont + '0';
-			board[i][j] = chr[6];
-			cont += 1;
-
+			board[i][j] = initialValue;
+			initialValue++;
 		}
 
 	}
+	//Prenche o vetor com os caracteres numéricos válidos para jogadas 0 a 8
+	initialValue = '0';
+	for (int i = 0; i < 9; i++)
+	{
+		validPositions[i] = initialValue;
+		initialValue++;
+	}
+		
+
 
 	if (player == player1)
 		return player1;
@@ -76,7 +83,7 @@ void Game::draw()
 
 }
 //atualiza a matriz
-bool Game::update(const char& player)
+char Game::update(const char& player)
 {
 
 	char pos = isDigit(player);
@@ -84,66 +91,67 @@ bool Game::update(const char& player)
 	{
 		board[0][0] = player;
 		system("cls");
-		return true;
+		return trocaJogador(player);
 	}
 	
 	if (pos == '1' && board[0][1] != player1 && board[0][1] != player2)
 	{
 		board[0][1] = player;
 		system("cls");
-		return true;
+		return trocaJogador(player);;
 	}
 
 	if (pos == '2' && board[0][2] != player1 && board[0][2] != player2)
 	{
 		board[0][2] = player;
 		system("cls");
-		return true;
+		return trocaJogador(player);
 	}
 			
 	if (pos == '3' && board[1][0] != player1 && board[1][0] != player2)
 	{
 		board[1][0] = player;
 		system("cls");
-		return true;
+		return trocaJogador(player);
 	}
 			
 	if (pos == '4' && board[1][1] != player1 && board[1][1] != player2)
 	{
 		board[1][1] = player;
 		system("cls");
-		return true;
+		return trocaJogador(player);
 	}
 			
 
 	if (pos == '5' && board[1][2] != player1 && board[1][2] != player2)
 	{
 		board[1][2] = player;
+		
 		system("cls");
-		return true;
+		return trocaJogador(player);
 	}
 			
 	if (pos == '6' && board[2][0] != player1 && board[2][0] != player2)
 	{
 		board[2][0] = player;
 		system("cls");
-		return true;
+		return trocaJogador(player);
 	}
 
 	if (pos == '7' && board[2][1] != player1 && board[2][1] != player2)
 	{
 		board[2][1] = player;
 		system("cls");
-		return true;
+		return trocaJogador(player);
 	}
 
 	if (pos == '8' && board[2][2] != player1 && board[2][2] != player2)
 	{
 		board[2][2] = player;
 		system("cls");
-		return true;
+		return trocaJogador(player);
 	}
-			
+
 	
 }
 //Verifica se alguem ganhou
@@ -241,18 +249,18 @@ char Game::trocaJogador(const char& player)
 char Game::isDigit(const char& player)
 {
 	char pos;
-	const char posicoes[9] = { '0','1','2','3','4','5','6','7','8' };
-
 	while (true)
 	{
+		
 		cout << "\nDeseja colocar " << player << " em qual posicao ?";
 		cin >> pos;
 
 		for (int i = 0; i < 10; i++)
 		{
-			if (pos == posicoes[i])
+			if (pos == validPositions[i])
 			{
-				return posicoes[i];
+				validPositions[i] = player;
+				return pos;
 			}
 			else if (i >= 9)
 			{

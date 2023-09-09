@@ -1,4 +1,7 @@
 ﻿  Game.cpp
-C:\Users\phenr\source\repos\TicTacToe\TicTacToe\Game.cpp(57): warning C4715: 'Game::initi': nem todos os caminhos de controle retornam um valor
-C:\Users\phenr\source\repos\TicTacToe\TicTacToe\Game.cpp(148): warning C4715: 'Game::update': nem todos os caminhos de controle retornam um valor
+  MainGame.cpp
+C:\Users\phenr\source\repos\TicTacToe\TicTacToe\MainGame.cpp(10,10): warning C4067: tokens inesperados após diretiva de pré-processador - esperado um newline
+  Gerando Código...
+C:\Users\phenr\source\repos\TicTacToe\TicTacToe\Game.cpp(156): warning C4715: 'Game::update': nem todos os caminhos de controle retornam um valor
+C:\Users\phenr\source\repos\TicTacToe\TicTacToe\Game.cpp(64): warning C4715: 'Game::initi': nem todos os caminhos de controle retornam um valor
   TicTacToe.vcxproj -> C:\Users\phenr\source\repos\TicTacToe\x64\Debug\TicTacToe.exe

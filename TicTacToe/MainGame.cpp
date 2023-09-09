@@ -10,7 +10,7 @@ utilizando POO
 #include "Game.h";
 int main()
 {
-	char  player;
+	char  player = ' ';
 	bool ValidMove = false;
 	bool endGame = false;
 	int counterMove = 0;
@@ -23,14 +23,9 @@ int main()
 	do {
 		
 		MyGame.draw();
-		ValidMove = MyGame.update(player);
+		player = MyGame.update(player);
 		winner = MyGame.checkWinner();
-		if (ValidMove == true)
-		{
-			player = MyGame.trocaJogador(player);
-			counterMove++;
-			
-		}
+
 		if (winner == 'X' || winner == 'O' || counterMove >= 9)
 		{
 			MyGame.draw();
@@ -43,6 +38,7 @@ int main()
 			}
 			
 		}
+		counterMove++;
 	
 	} while (endGame == false);
 
