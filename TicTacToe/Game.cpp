@@ -8,8 +8,10 @@ Game::Game()
 	player2 = 0x4F;								  // Tecla O
 
 	// Inicializa a matriz no construtor
-	for (int i = 0; i < 3; i++) {
-		for (int j = 0; j < 3; j++) {
+	for (int i = 0; i < 3; i++) 
+	{
+		for (int j = 0; j < 3; j++)
+		{
 			board[i][j] = '0';
 		}
 	}
