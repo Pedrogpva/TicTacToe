@@ -1,4 +1,7 @@
 ﻿  Game.cpp
+  MainGame.cpp
+D:\source\repos\TicTacToe\TicTacToe\MainGame.cpp(10,10): warning C4067: tokens inesperados após diretiva de pré-processador - esperado um newline
+  Gerando Código...
 D:\source\repos\TicTacToe\TicTacToe\Game.cpp(66): warning C4715: 'Game::initi': nem todos os caminhos de controle retornam um valor
 D:\source\repos\TicTacToe\TicTacToe\Game.cpp(158): warning C4715: 'Game::update': nem todos os caminhos de controle retornam um valor
   TicTacToe.vcxproj -> D:\source\repos\TicTacToe\x64\Debug\TicTacToe.exe

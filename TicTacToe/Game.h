@@ -15,7 +15,7 @@ public:
 	void draw();
 	bool finilize(const char& winner)const;
 	char checkWinner()const;
-	char trocaJogador(const char &player);
+	char switchPlayer(const char &player);
 	char isDigit(const char &player);
 };
 #endif // !GAME_H
