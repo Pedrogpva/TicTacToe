@@ -1,11 +1,32 @@
 #include "Game.h"
 #include<iostream>
 using  namespace std;
+
+const int Game::win[8][3][2]
+{
+	//Vence nas linhas
+	{{0,0},{0,1},{0,2}},
+	{{1,0},{1,1},{1,2}},
+	{{2,0},{2,1},{2,2}},
+
+	//vence nas colunas
+	{{0,0},{1,0},{2,0}},
+	{{0,1},{1,1},{2,1}},
+	{{0,2},{1,2},{2,2}},
+
+	//vence nas diagonais
+	{{0,0},{1,1},{2,2}},
+	{{0,2},{1,1},{2,0}},
+};
+
 //construtor
 Game::Game()
 {
-	player1 = 0x58;                               // Tecla X
-	player2 = 0x4F;								  // Tecla O
+	player1 = 'X';
+	player2 = 'O';
+
+	
+
 
 	// Inicializa a matriz no construtor
 	for (int i = 0; i < 3; i++) 
@@ -17,6 +38,8 @@ Game::Game()
 	}
 	for (int i = 0; i < 9; i++)
 		validPositions[i] = '0';
+
+
 	
 }
 //Inicia o jogo
@@ -31,7 +54,7 @@ char Game::initi()
 	{
 		
 		cout << "Valor invalido!\n";
-		cout << "Excolha " << player1 << " ou " << player2 << " para iniciar ";
+		cout << "Escolha " << player1 << " ou " << player2 << " para iniciar ";
 		cin >> player;
 		system("cls");
 
@@ -88,36 +111,36 @@ void Game::draw()
 char Game::update(const char& player)
 {
 
-	char pos = isDigit(player);
-	if (pos == '0' && board[0][0] != player1 && board[0][0] != player2)
+	int pos = checkPlay(player);
+	if (pos == 0 && board[0][0] != player1 && board[0][0] != player2)
 	{
 		board[0][0] = player;
 		system("cls");
 		return switchPlayer(player);
 	}
 	
-	if (pos == '1' && board[0][1] != player1 && board[0][1] != player2)
+	if (pos == 1 && board[0][1] != player1 && board[0][1] != player2)
 	{
 		board[0][1] = player;
 		system("cls");
 		return switchPlayer(player);;
 	}
 
-	if (pos == '2' && board[0][2] != player1 && board[0][2] != player2)
+	if (pos == 2 && board[0][2] != player1 && board[0][2] != player2)
 	{
 		board[0][2] = player;
 		system("cls");
 		return switchPlayer(player);
 	}
 			
-	if (pos == '3' && board[1][0] != player1 && board[1][0] != player2)
+	if (pos == 3 && board[1][0] != player1 && board[1][0] != player2)
 	{
 		board[1][0] = player;
 		system("cls");
 		return switchPlayer(player);
 	}
 			
-	if (pos == '4' && board[1][1] != player1 && board[1][1] != player2)
+	if (pos == 4 && board[1][1] != player1 && board[1][1] != player2)
 	{
 		board[1][1] = player;
 		system("cls");
@@ -125,7 +148,7 @@ char Game::update(const char& player)
 	}
 			
 
-	if (pos == '5' && board[1][2] != player1 && board[1][2] != player2)
+	if (pos == 5 && board[1][2] != player1 && board[1][2] != player2)
 	{
 		board[1][2] = player;
 		
@@ -133,21 +156,21 @@ char Game::update(const char& player)
 		return switchPlayer(player);
 	}
 			
-	if (pos == '6' && board[2][0] != player1 && board[2][0] != player2)
+	if (pos == 6 && board[2][0] != player1 && board[2][0] != player2)
 	{
 		board[2][0] = player;
 		system("cls");
 		return switchPlayer(player);
 	}
 
-	if (pos == '7' && board[2][1] != player1 && board[2][1] != player2)
+	if (pos == 7 && board[2][1] != player1 && board[2][1] != player2)
 	{
 		board[2][1] = player;
 		system("cls");
 		return switchPlayer(player);
 	}
 
-	if (pos == '8' && board[2][2] != player1 && board[2][2] != player2)
+	if (pos == 8 && board[2][2] != player1 && board[2][2] != player2)
 	{
 		board[2][2] = player;
 		system("cls");
@@ -159,80 +182,22 @@ char Game::update(const char& player)
 //Verifica se alguem ganhou
 char Game::checkWinner()const
 {
-	// vence nas linhas
-	if (board[0][0] == player1 && board[0][1] == player1 && board[0][2] == player1)
+	for (auto &line : win)
 	{
-		return player1;
-	}
-	else if (board[0][0] == player2 && board[0][1] == player2 && board[0][2] == player2)
-	{
-		return player2;
-	}
+		char a = board[line[0][0]][line[0][1]];
+		char b = board[line[1][0]][line[1][1]];
+		char c = board[line[2][0]][line[2][1]];
 
-	if (board[1][0] == player1 && board[1][1] == player1 && board[1][2] == player1)
-	{
-
-		return player1;
+		if (a == b && b == c)
+		{
+			if (a == player1)
+				return player1;
+			else
+				return player2;
+		}
+			
 	}
-	else if (board[1][0] == player2 && board[1][1] == player2 && board[1][2] == player2)
-	{
-		return player2;
-	}
-
-	if (board[2][0] == player1 && board[2][1] == player1 && board[2][2] == player1)
-	{
-		return player1;
-	}
-	else if (board[2][0] == player2 && board[2][1] == player2 && board[2][2] == player2)
-	{
-		return player2;
-	}
-
-
-	//vence nas colunas 
-	if (board[0][0] == player1 && board[1][0] == player1 && board[2][0] == player1)
-	{
-		return player1;
-	}
-	else if (board[0][0] == player2 && board[1][0] == player2 && board[2][0] == player2)
-	{
-		return player2;
-	}
-
-	if (board[0][1] == player1 && board[1][1] == player1 && board[2][1] == player1)
-	{
-		return player1;
-	}
-	else if (board[0][1] == player2 && board[1][1] ==  player2 && board[2][1] == player2)
-	{
-		return player2;
-	}
-
-	if (board[0][2] == player1 && board[1][2] == player1 && board[2][2] == player1)
-	{
-		return player1;
-	}
-	else if (board[0][2] == player2 && board[1][2] == player2 && board[2][2] == player2)
-		return player2;
-
-	// Vence na diagonais
-	if (board[0][0] == player1 && board[1][1] == player1 && board[2][2] == player1)
-	{
-		return player1;
-	}
-	else if (board[0][0] == player2 && board[1][1] == player2 && board[2][2] == player2)
-	{
-		return player2;
-	}
-
-	if (board[0][2] == player1 && board[1][1] == player1 && board[2][0] == player1)
-	{
-		return player1;
-	}
-	else if (board[0][2] == player2 && board[1][1] == player2 && board[2][0] == player2)
-	{
-		return player2;
-	}
+	
 	return 'E';
 
 }
@@ -248,34 +213,41 @@ char Game::switchPlayer(const char& player)
 		return player1;
 	}
 }
-char Game::isDigit(const char& player)
+char Game::checkPlay(const char& player)
 {
-	char pos;
+	int pos = -1;
 	while (true)
 	{
 		
-		cout << "\nDeseja colocar " << player << " em qual posicao ?";
+		cout << "\nDeseja colocar " << player << " em qual posicao ? \n";
 		cin >> pos;
-
-		for (int i = 0; i < 10; i++)
+		
+		if (cin.fail() || pos > 8)
 		{
-			if (pos == validPositions[i])
-			{
-				validPositions[i] = player;
-				return pos;
-			}
-			else if (i >= 9)
-			{
-				cout << "Valor digitado invalido ";
-				
-			}
+			cout << "Valor digitado invalido \n";
+		
 
+			cin.clear();
+			cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+			
 		}
+		else if(validPositions[pos] != player1 && validPositions[pos] != player2)
+		{
+			validPositions[pos] = player;
+			return pos;
+		}
+		else
+		{
+			cout << "Casa ocupada \n";
+		}
+
 		
 	}
 	
 	
 }
+
 bool Game::finilize(const char& winner)const
 {
 	char option = 'N';

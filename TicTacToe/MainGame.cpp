@@ -26,7 +26,7 @@ int main()
 		player = MyGame.update(player);
 		winner = MyGame.checkWinner();
 
-		if (winner == 'X' || winner == 'O' || counterMove >= 9)
+		if (winner == 'X' || winner == 'O' || counterMove >= 8)
 		{
 			MyGame.draw();
 			endGame = MyGame.finilize(winner);
