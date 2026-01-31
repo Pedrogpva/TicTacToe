@@ -213,7 +213,7 @@ char Game::switchPlayer(const char& player)
 		return player1;
 	}
 }
-char Game::checkPlay(const char& player)
+int Game::checkPlay(const char& player)
 {
 	int pos = -1;
 	while (true)
@@ -221,15 +221,19 @@ char Game::checkPlay(const char& player)
 		
 		cout << "\nDeseja colocar " << player << " em qual posicao ? \n";
 		cin >> pos;
+
+		system("cls");
+		draw();
 		
 		if (cin.fail() || pos > 8)
 		{
-			cout << "Valor digitado invalido \n";
+			
+			cout << "\n Valor digitado invalido! \n";
 		
 
 			cin.clear();
 			cin.ignore(numeric_limits<streamsize>::max(), '\n');
-
+		
 			
 		}
 		else if(validPositions[pos] != player1 && validPositions[pos] != player2)
@@ -239,10 +243,11 @@ char Game::checkPlay(const char& player)
 		}
 		else
 		{
-			cout << "Casa ocupada \n";
+			cout << "\nCasa ocupada! \n";
 		}
 
 		
+
 	}
 	
 	

@@ -17,7 +17,7 @@ public:
 	bool finilize(const char& winner)const;
 	char checkWinner()const;
 	char switchPlayer(const char &player);
-	char checkPlay(const char &player);
+	int checkPlay(const char &player);
 	const bool isDigit(const char pos);
 };
 #endif // !GAME_H
